@@ -1,0 +1,55 @@
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6">
+
+            <h1>Registro</h1>
+            <hr>
+
+            <form action="/auth/sign-up" method="POST">
+
+                <div class="mb-3 row">
+                    <div class="col">
+                        <label for="email" class="form-label">Dirección de email</label>
+                        <input type="email" class="form-control" id="email" name="email">
+                        <div class="form-text">Requerido.</div>
+                    </div>
+                    <div class="col">
+                        <label for="userPassword" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" id="userPassword" name="userPassword">
+                        <div class="form-text">Requerido.</div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="username" class="form-label">Nombre de usuario</label>
+                    <input type="text" class="form-control" id="username" name="username">
+                </div>
+
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Imagen</label>
+                    <input type="file" class="form-control" id="formFile" name="imageUrl">
+                    <div class="form-text">Introduce la URL a la imagen que desees de perfil.</div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="description" class="form-label">Descripción</label>
+                    <textarea class="form-control" id="description" rows="3" name="description"></textarea>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-dark block">Completar registro</button>
+                </div>
+
+                {{#if errorMessage}}
+                <div id="errorMessage">
+                    <p>{{errorMessage}}</p>
+                </div>
+                {{/if}}
+
+            </form>
+        </div>
+    </div>
+
+</div>
