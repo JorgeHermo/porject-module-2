@@ -28,7 +28,7 @@ router.get('/', (req, res, next) => {
 
 router.get('/:id/details', (req, res, next) => {
 
-    const { id } = req.params   
+    const { id } = req.params
 
     User
         .findById(id)
@@ -57,7 +57,7 @@ router.get('/:id/edit', (req, res, next) => {
 //         .then(user => res.redirect('/users/${user._id}'))
 //         .catch(err => console.log(err))
 
-       
+
 // })
 
 
