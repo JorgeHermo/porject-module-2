@@ -53,20 +53,33 @@ router.get('/:id/edit', (req, res, next) => {
 
     Recipe
         .findById(id)
-        .then(recipeDetails => res.render('/recipes/edit-recipes', recipeDetails))
+        .then(recipeDetails => res.render('recipes/edit-recipe', recipeDetails))
         .catch(err => console.log(err))
 })
 
 // recipe edition (handler)
 
 router.post('/:id/edit', (req, res, next) => {
+
     const { title, ingredients, directions, category, duration, imageUrl } = req.body
     const { id } = req.params
 
     Recipe
         .findByIdAndUpdate(id, { title, ingredients, directions, category, duration, imageUrl })
-        .then(recipeDetails => res.redirect(`/recipes/${id}/details`))
+        .then(() => res.redirect(`/recipes/${id}/details`))
         .catch(err => console.log(err))
 })
+
+// recipe delete
+
+router.post('/:id/delete', (req, res, next) => {
+
+    const { id } = req.params
+
+    Recipe
+        .findByIdAndDelete(id)
+        .then(() => res.redirect('/recipes/list-recipes'))
+})
+
 
 module.exports = router

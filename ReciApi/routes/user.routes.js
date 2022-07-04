@@ -31,7 +31,7 @@ router.get('/', (req, res, next) => {
 //USER DETAILS
 router.get('/:id/details', (req, res, next) => {
 
-    const { id } = req.params   
+    const { id } = req.params
 
     User
         .findById(id)
