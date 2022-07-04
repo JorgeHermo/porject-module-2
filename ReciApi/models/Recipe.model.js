@@ -8,9 +8,20 @@ const recipeSchema = new Schema(
             trim: true,
             set: value => value.charAt(0).toUpperCase() + value.substring(1).toLowerCase()
         },
-        ingridients: { type: [String], required: true, trim: true },
-        description: { type: String, required: true, trim: true },
-        directions: { type: String, required: true, trim: true },
+        ingredients: {
+            type: [String],
+            required: true,
+            trim: true
+        },
+        description: {
+            type: String,
+            required: true,
+            trim: true
+        },
+        directions: {
+            type: [String],
+            required: true
+        },
         location: {
             type: {
                 type: String
@@ -33,13 +44,23 @@ const recipeSchema = new Schema(
                 'Vegan'
             ]
         },
-        user: { type: Schema.Types.ObjectId, ref: 'User' },
-        duration: { type: Number, required: true },
-        imageUrl: { type: String, required: true }
+        owner: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        duration: {
+            type: Number,
+            required: true
+        },
+        imageUrl: {
+            type: String,
+            required: true
+        }
     },
     {
         timestamps: true,
     }
 )
+const Recipe = model("Recipe", recipeSchema)
 
 module.exports = Recipe;
