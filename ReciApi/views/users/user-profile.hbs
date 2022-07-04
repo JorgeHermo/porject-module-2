@@ -1,0 +1,21 @@
+<div class="container">
+    <h1>{{user.username}}`s details</h1>
+
+    <hr>
+
+    <div class="card" style="width: 30rem;">
+
+        <img src="{{user.avatar}}" class="card-img-top" alt="Avatar pic">
+
+        <div class="card-body">
+
+            <h5 class="card-title">Name: {{user.username}}</h5>
+            <p class="card-text">Email: {{user.email}}</p>
+            <p class="card-text">Description: {{user.description}} ---delante, la descripción.</p>
+            <p class="card-text">Role: {{user.description}}</p>
+            <a href="/users" class="btn btn-warning">Return to Users List!</a>
+            
+        </div>
+    </div>    
+</div>
+

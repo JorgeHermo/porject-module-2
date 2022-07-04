@@ -1,0 +1,14 @@
+<div class="container">
+
+    <h2>All the users!</h2>
+
+{{#each users}}
+
+<a href="/users/{{id}}/details">{{username}} details</a>
+<a href="/users/{{id}}/edit">Edit {{username}} </a>
+
+<hr>
+{{/each}}
+
+
+</div>
