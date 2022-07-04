@@ -1,0 +1,17 @@
+<div class="container">
+    <h1>Recipes list</h1>
+    <hr>
+
+    {{#each recipes}}
+
+    <div class="card" style="width: 18rem;">
+        <img src="{{imageUrl}}" class="card-img-top" alt="{{title}}">
+        <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            <p class="card-text">{{description}}</p>
+            <a href="/recipes/{{id}}/details" class="btn btn-primary">Details</a>
+        </div>
+    </div>
+
+    {{/each}}
+</div>

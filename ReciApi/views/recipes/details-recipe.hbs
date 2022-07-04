@@ -1,0 +1,22 @@
+<div class="container">
+    <h1>Recipe Details</h1>
+
+    <hr>
+
+    {{#each recipeData}}
+
+    <div class="card" style="width: 18rem;">
+        <img src="{{imageUrl}}" class="card-img-top" alt="{{title}}">
+        <div class="card-body">
+            <h5 class="card-title">{{title}}</h5>
+            <p class="card-text">{{description}}</p>
+            {{!-- {{#each ingredients}}
+
+            {{/each}} --}}
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+
+    {{/each}}
+</div>
