@@ -1,0 +1,119 @@
+<div class="container">
+
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+
+            <h1>New Recipe</h1>
+
+            <hr>
+
+            <form action="/recipes/create" method="POST">
+                <div class="mb-3">
+                    <label for="ttile" class="form-label">Recipe</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Recipe name"
+                        value="{{title}}">
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Ingredients
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Ingredients</span>
+                            <label for="ingredients" class="form-label"></label>
+                            <input type="text" class="form-control" id="ingredients" name="ingredients"
+                                value="{{ingridient[0]}}">
+                        </li>
+                        <li>
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Ingredients</span>
+                            <label for="ingredients" class="form-label"></label>
+                            <input type="text" class="form-control" id="ingredients" name="ingredients"
+                                value="{{ingridient[1]}}">
+                        </li>
+                        <li>
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Ingredients</span>
+                            <label for="ingredients" class="form-label"></label>
+                            <input type="text" class="form-control" id="ingredients" name="ingredients"
+                                value="{{ingridient[2]}}">
+                        </li>
+                        <li>
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Ingredients</span>
+                            <label for="ingredients" class="form-label"></label>
+                            <input type="text" class="form-control" id="ingredients" name="ingredients"
+                                value="{{ingridient[3]}}">
+                        </li>
+                        <li>
+                            <span class="input-group-text" id="inputGroup-sizing-sm">Ingredients</span>
+                            <label for="ingredients" class="form-label"></label>
+                            <input type="text" class="form-control" id="ingredients" name="ingredients"
+                                value="{{ingridient[4]}}">
+                        </li>
+                    </ul>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <input type="text" class="form-control" id="description" name="description"
+                        placeholder="Describe the recipe" value="{{description}}">
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Directions
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <span class="input-group-text" id="inputGroup-sizing-sm">directions</span>
+                            <label for="directions" class="form-label"></label>
+                            <input type="text" class="form-control" id="directions" name="directions"
+                                value="{{directions}}">
+                        </li>
+                        <li>
+                            <span class="input-group-text" id="inputGroup-sizing-sm">directions</span>
+                            <label for="directions" class="form-label"></label>
+                            <input type="text" class="form-control" id="directions" name="directions"
+                                value="{{directions}}">
+                        </li>
+                        <li>
+                            <span class="input-group-text" id="inputGroup-sizing-sm">directions</span>
+                            <label for="directions" class="form-label"></label>
+                            <input type="text" class="form-control" id="directions" name="directions"
+                                value="{{directions}}">
+                        </li>
+                        <li>
+                            <span class="input-group-text" id="inputGroup-sizing-sm">directions</span>
+                            <label for="directions" class="form-label"></label>
+                            <input type="text" class="form-control" id="directions" name="directions"
+                                value="{{directions}}">
+                        </li>
+                        <li>
+                            <span class="input-group-text" id="inputGroup-sizing-sm">directions</span>
+                            <label for="directions" class="form-label"></label>
+                            <input type="text" class="form-control" id="directions" name="directions"
+                                value="{{directions}}">
+                        </li>
+                    </ul>
+                </div>
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Categories</option>
+                    <option value="{{category.[0]}}">BEEF</option>
+                    <option value="{{category.[1]}}">FISH</option>
+                    <option value="{{category.[2]}}">SALAD</option>
+                    <option value="{{category.[3]}}">CHICKEN</option>
+                    <option value="{{category.[4]}}">DESSERT</option>
+                    <option value="{{category.[5]}}">GOAT</option>
+                    <option value="{{category.[6]}}">PORK</option>
+                    <option value="{{category.[7]}}">SEAFOOD</option>
+                    <option value="{{category.[8]}}">PASTA</option>
+                    <option value="{{category.[9]}}">VEGETARIAN</option>
+                    <option value="{{category.[10]}}">VEGAN</option>
+                </select>
+                <div class="mb-3">
+                    <label for="duration" class="form-label">duration</label>
+                    <input type="number" class="form-control" id="duration" name="duration"
+                        placeholder="Recipe duration">
+                </div>
+                <button type="submit" class="btn btn-dark">Create</button>
+            </form>
+
+        </div>
