@@ -4,23 +4,23 @@ const recipeSchema = new Schema(
     {
         title: {
             type: String,
-            required: true,
+            required: [true, 'Title is required.'],
             trim: true,
             set: value => value.charAt(0).toUpperCase() + value.substring(1).toLowerCase()
         },
         ingredients: {
             type: [String],
-            required: true,
+            required: [true, 'Ingredients is required.'],
             trim: true
         },
         description: {
             type: String,
-            required: true,
+            required: [true, 'Description is required.'],
             trim: true
         },
         directions: {
             type: [String],
-            required: true
+            required: [true, 'Directions are required.']
         },
         location: {
             type: {
@@ -31,17 +31,17 @@ const recipeSchema = new Schema(
         category: {
             type: String,
             enum: [
-                'Beef',
-                'Fish',
-                'Salad',
-                'Chicken',
-                'Dessert',
-                'Goat',
-                'Pork',
-                'Seafood',
-                'Pasta',
-                'Vegetarian',
-                'Vegan'
+                'BEEF',
+                'FISH',
+                'SALAD',
+                'CHICKEN',
+                'DESSERT',
+                'GOAT',
+                'PORK',
+                'SEAFOOD',
+                'PASTA',
+                'VEGETARIAN',
+                'VEGAN'
             ]
         },
         owner: {
@@ -50,11 +50,11 @@ const recipeSchema = new Schema(
         },
         duration: {
             type: Number,
-            required: true
+            required: [true, 'Duration is required.']
         },
         imageUrl: {
             type: String,
-            required: true
+            required: [true, 'Image is required.']
         }
     },
     {
