@@ -32,6 +32,13 @@ User routes
 | `/user/:id/edit`    | POST        | Update a specific User            |
 | `/user/:id/delete`  | POST        | Delete a specific User            |
 
+Admin routes
+
+| Route               | METHOD      | Description                       |
+| -----------------   | ---------   | -------------------------------   |
+| `/admin`            | GET         | Retrive the admin panel           |
+
+
 recipe routes
 
 | Route                | METHOD      | Description                       |
