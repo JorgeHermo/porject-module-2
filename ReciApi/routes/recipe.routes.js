@@ -4,6 +4,7 @@ const Recipe = require('./../models/Recipe.model')
 
 const { isLoggedIn } = require('../middleware/session-guards')
 
+const uploaderConfig = require('./../config/uploader.config')
 
 // RECIPE CREATE
 router.get('/create', isLoggedIn, (req, res, next) => {
@@ -12,12 +13,14 @@ router.get('/create', isLoggedIn, (req, res, next) => {
 
 
 // RECIPE CREATE
-router.post('/create', isLoggedIn, (req, res, next) => {
+    router.post('/create', isLoggedIn, uploaderConfig.single('cover'), (req, res, next) => {
 
-    const { title, ingredients, directions, category, duration, imageUrl } = req.body
+    const { title, ingredients, directions, category, duration, owner } = req.body
+
+    console.log(req.file)
 
     Recipe
-        .create({ title, ingredients, directions, category, duration, imageUrl })
+        .create({ title, ingredients, directions, category, duration, imageUrl: req.file.path, owner })
         .then(() => res.redirect('/recipes/list'))
         .catch(error => next(new Error(error)))
 })
@@ -40,6 +43,7 @@ router.get('/:id/details', isLoggedIn, (req, res, next) => {
 
     Recipe
         .findById(id)
+        .populate('User')
         .then(recipeData => res.render('recipes/details-recipe', { recipeData }))
         .catch(error => next(new Error(error)))
 })
