@@ -2,9 +2,11 @@ const router = require("express").Router()
 
 const User = require("../models/User.model")
 
+const { isLoggedIn } = require('../middleware/session-guards')
+
 
 //ALL USERS
-router.get('/', (req, res, next) => {
+router.get('/', isLoggedIn, (req, res, next) => {
 
     User
         .find()
@@ -14,7 +16,7 @@ router.get('/', (req, res, next) => {
 
 
 //USER DETAILS
-router.get('/:id/details', (req, res, next) => {
+router.get('/:id/details', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
 
@@ -26,7 +28,7 @@ router.get('/:id/details', (req, res, next) => {
 
 
 //EDIT USER 
-router.get('/:id/edit', (req, res, next) => {
+router.get('/:id/edit', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
 
@@ -38,7 +40,7 @@ router.get('/:id/edit', (req, res, next) => {
 
 
 //EDIT USER
-router.post('/:id/edit', (req, res, next) => {
+router.post('/:id/edit', isLoggedIn, (req, res, next) => {
 
     const { username, email, password, avatar, description, role } = req.body
     const { id } = req.params
@@ -51,7 +53,7 @@ router.post('/:id/edit', (req, res, next) => {
 
 
 //DELETE USER 
-router.get('/:id/delete', (req, res) => {
+router.get('/:id/delete', isLoggedIn, (req, res) => {
 
     const { id } = req.params
 

@@ -2,15 +2,17 @@ const router = require('express').Router()
 
 const Recipe = require('./../models/Recipe.model')
 
+const { isLoggedIn } = require('../middleware/session-guards')
+
 
 // RECIPE CREATE
-router.get('/create', (req, res, next) => {
+router.get('/create', isLoggedIn, (req, res, next) => {
     res.render('recipes/create-recipe')
 })
 
 
 // RECIPE CREATE
-router.post('/create', (req, res, next) => {
+router.post('/create', isLoggedIn, (req, res, next) => {
 
     const { title, ingredients, directions, category, duration, imageUrl } = req.body
 
@@ -22,7 +24,7 @@ router.post('/create', (req, res, next) => {
 
 
 // RECIPE LIST
-router.get('/list', (req, res, next) => {
+router.get('/list', isLoggedIn, (req, res, next) => {
 
     Recipe
         .find()
@@ -32,7 +34,7 @@ router.get('/list', (req, res, next) => {
 
 
 // RECIPE DETAILS
-router.get('/:id/details', (req, res, next) => {
+router.get('/:id/details', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
 
@@ -44,7 +46,7 @@ router.get('/:id/details', (req, res, next) => {
 
 
 // RECIPE EDITION
-router.get('/:id/edit', (req, res, next) => {
+router.get('/:id/edit', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
 
@@ -55,7 +57,7 @@ router.get('/:id/edit', (req, res, next) => {
 })
 
 
-router.post('/:id/edit', (req, res, next) => {
+router.post('/:id/edit', isLoggedIn, (req, res, next) => {
 
     const { title, ingredients, directions, category, duration, imageUrl } = req.body
     const { id } = req.params
@@ -68,7 +70,7 @@ router.post('/:id/edit', (req, res, next) => {
 
 
 // RECIPE DELETE
-router.post('/:id/delete', (req, res, next) => {
+router.post('/:id/delete', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
 
