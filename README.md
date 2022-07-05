@@ -26,9 +26,9 @@ User routes
 
 | Route               | METHOD      | Description                       |
 | -----------------   | ---------   | -------------------------------   |
-| `/users`            | GET         | Retrive the user list data        |
+| `/`                 | GET         | Retrive the user list data        |
 | `/user/:id/details` | GET         | Retrive the user details          |
-| `/user/:id/edit`    | GET         | Retrives the user Data            |
+<!-- | `/user/:id/edit`    | GET         | Retrives the user Data            | -->
 | `/user/:id/edit`    | POST        | Update a specific User            |
 | `/user/:id/delete`  | POST        | Delete a specific User            |
 
