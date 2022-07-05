@@ -13,7 +13,7 @@ router.get('/create', isLoggedIn, (req, res, next) => {
 
 
 // RECIPE CREATE
-    router.post('/create', isLoggedIn, uploaderConfig.single('cover'), (req, res, next) => {
+router.post('/create', isLoggedIn, uploaderConfig.single('cover'), (req, res, next) => {
 
     const { title, ingredients, directions, category, duration, owner } = req.body
 
@@ -43,7 +43,7 @@ router.get('/:id/details', isLoggedIn, (req, res, next) => {
 
     Recipe
         .findById(id)
-        .populate('User')
+        .populate('owner')
         .then(recipeData => res.render('recipes/details-recipe', { recipeData }))
         .catch(error => next(new Error(error)))
 })
