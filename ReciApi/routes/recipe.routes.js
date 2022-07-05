@@ -15,14 +15,17 @@ router.get('/create', isLoggedIn, (req, res, next) => {
 // RECIPE CREATE
 router.post('/create', isLoggedIn, uploaderConfig.single('cover'), (req, res, next) => {
 
-    const { title, ingredients, directions, category, duration } = req.body
-
+    const { title, ingredients, directions, category, duration, latitude, longitude } = req.body
+    const location = {
+        type: 'Point',
+        coordinates: [latitude, longitude]
+    }
     const owner = req.session.currentUser._id
 
     console.log(req.file)
 
     Recipe
-        .create({ title, ingredients, directions, category, duration, imageUrl: req.file.path, owner })
+        .create({ title, ingredients, directions, category, duration, location, imageUrl: req.file.path, owner })
         .then(() => res.redirect('/recipes/list'))
         .catch(error => next(new Error(error)))
 })
