@@ -13,9 +13,11 @@ router.get('/create', isLoggedIn, (req, res, next) => {
 
 
 // RECIPE CREATE
-    router.post('/create', isLoggedIn, uploaderConfig.single('cover'), (req, res, next) => {
+router.post('/create', isLoggedIn, uploaderConfig.single('cover'), (req, res, next) => {
 
-    const { title, ingredients, directions, category, duration, owner } = req.body
+    const { title, ingredients, directions, category, duration } = req.body
+
+    const owner = req.session.currentUser._id
 
     console.log(req.file)
 
@@ -36,6 +38,23 @@ router.get('/list', isLoggedIn, (req, res, next) => {
 })
 
 
+//MY RECIPES
+router.get('/my-recipes', isLoggedIn, (req, res, next) => {
+
+    const { _id: owner } = req.session.currentUser
+
+    console.log('..........', owner)
+
+    Recipe
+        .find({ owner })
+        .then(recipes => {
+            console.log('+++++++', recipes)
+            res.render('recipes/my-recipes', { recipes })
+        })
+        .catch(error => next(new Error(error)))
+})
+
+
 // RECIPE DETAILS
 router.get('/:id/details', isLoggedIn, (req, res, next) => {
 
@@ -43,7 +62,7 @@ router.get('/:id/details', isLoggedIn, (req, res, next) => {
 
     Recipe
         .findById(id)
-        .populate('User')
+        .populate('owner')
         .then(recipeData => res.render('recipes/details-recipe', { recipeData }))
         .catch(error => next(new Error(error)))
 })
