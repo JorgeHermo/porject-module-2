@@ -6,7 +6,7 @@ const isOwnerId = (req, res, next) => {
     if (isOwner || isAdmin) {
         next()
     } else {
-        res.render('auth/login', { errorMessage: 'no tienes permisos merluzo' })
+        res.render('auth/login', { errorMessage: 'WRONG CREDENTIALS' })
     }
 }
 

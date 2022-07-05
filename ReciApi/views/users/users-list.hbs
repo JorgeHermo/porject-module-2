@@ -2,14 +2,14 @@
 
     <h2>All the users!</h2>
 
-{{#each users}}
+    {{#each users}}
 
-<a href="/users/{{id}}/details">{{username}} details</a>
-<a href="/users/{{id}}/edit">Edit {{username}} </a>
-<a href="/users/{{id}}/delete">delete {{username}} </a>
+    <a href="/users/{{id}}/details">{{username}}'s details</a>
+    <a href="/users/{{id}}/edit">Edit {{username}} </a>
+    <a href="/users/{{id}}/delete">Delete {{username}} </a>
 
-<hr>
-{{/each}}
+    <hr>
+    {{/each}}
 
 
 </div>

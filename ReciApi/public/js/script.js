@@ -1,7 +1,7 @@
 document.addEventListener(
   "DOMContentLoaded",
   () => {
-    console.log("ReciApi JS imported successfully!");
+    console.log("ReciApi JS imported successfully!")
   },
   false
-);
+)

@@ -10,7 +10,7 @@ const recipeSchema = new Schema(
         },
         ingredients: {
             type: [String],
-            required: [true, 'Ingredients is required.'],
+            required: [true, 'Ingredients are required.'],
             trim: true
         },
         description: {

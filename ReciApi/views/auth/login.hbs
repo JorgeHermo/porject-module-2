@@ -9,17 +9,17 @@
 
             <form action="/auth/log-in" method="POST">
                 <div class="mb-3">
-                    <label for="email" class="form-label">Dirección de email</label>
+                    <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control" id="email" name="email">
                 </div>
 
                 <div class="mb-3">
-                    <label for="userPassword" class="form-label">Contraseña</label>
+                    <label for="userPassword" class="form-label">Password</label>
                     <input type="password" class="form-control" id="userPassword" name="userPassword">
                 </div>
 
                 <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-dark block">Acceder</button>
+                    <button type="submit" class="btn btn-dark block">LOGIN</button>
                 </div>
 
                 {{#if errorMessage}}
