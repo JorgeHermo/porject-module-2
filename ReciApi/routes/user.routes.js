@@ -63,7 +63,7 @@ router.post('/:id/edit', (req, res, next) => {
         .then(() => res.redirect(`/users/${id}/details`))
         .catch(err => console.log(err))
 
-       
+
 })
 
 //DELETE USER 
