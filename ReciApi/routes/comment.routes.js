@@ -15,7 +15,7 @@ router.post('/:recipe_id/comment', isLoggedIn, (req, res, next) => {
     Comment
         .create({ owner, comment, recipe })
         .then(() => res.redirect(`/recipes/${recipe}/details`))
-        .catch(err => console.log(err))
+        .catch(error => next(new Error(error)))
 })
 
 
