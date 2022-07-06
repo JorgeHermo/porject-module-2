@@ -10,6 +10,7 @@ const { rolesChecker } = require('../utils/checker-roles')
 router.get('/', isLoggedIn, (req, res, next) => {
 
     const roles = rolesChecker(req.session.currentUser)
+    console.log(roles)
 
     User
         .find()

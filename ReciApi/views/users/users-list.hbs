@@ -6,15 +6,17 @@
 
     <a href="/users/{{id}}/details">{{username}}'s details</a>
 
-    {{#if roles.isAdmin}}
+
+    {{#if ../roles.isAdmin}}
 
     <a href="/users/{{id}}/edit">Edit {{username}} </a>
     <a href="/users/{{id}}/delete">Delete {{username}} </a>
-    
+
+
     {{/if}}
 
     <hr>
-    
+
     {{/each}}
 
 </div>
