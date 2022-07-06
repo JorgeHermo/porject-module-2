@@ -3,7 +3,6 @@ const router = require('express').Router()
 const Recipe = require('./../models/Recipe.model')
 
 const { isLoggedIn } = require('../middleware/session-guards')
-
 const uploaderConfig = require('./../config/uploader.config')
 
 // RECIPE CREATE
@@ -21,8 +20,6 @@ router.post('/create', isLoggedIn, uploaderConfig.single('cover'), (req, res, ne
         coordinates: [latitude, longitude]
     }
     const owner = req.session.currentUser._id
-
-    console.log(req.file)
 
     Recipe
         .create({ title, ingredients, directions, category, duration, location, imageUrl: req.file.path, owner })
@@ -105,6 +102,7 @@ router.post('/:id/delete', isLoggedIn, (req, res, next) => {
         .then(() => res.redirect('/recipes/list-recipes'))
         .catch(error => next(new Error(error)))
 })
+
 
 
 module.exports = router
