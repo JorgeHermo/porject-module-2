@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require("mongoose")
 
 const commentSchema = newSchema(
     {
@@ -16,4 +16,4 @@ const commentSchema = newSchema(
 
 const Comment = model("Comment", commentSchema)
 
-module.exports = Comment;
+module.exports = Comment
