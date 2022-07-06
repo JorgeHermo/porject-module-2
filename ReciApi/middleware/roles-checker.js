@@ -1,8 +1,10 @@
-const rolesChecker = user => {
-    return {
-        isAdmin: user?.role === "ADMIN",
-        isUser: user?.role === "USER"
+const checkRole = (...grantedRoles) => (req, res, next) => {
+
+    if (grantedRoles.includes(req.session.currentUser.role)) {
+        next()
+    } else {
+        res.render('auth/login', { errorMessage: 'WRONG CREDENTIALS' })
     }
 }
 
-module.exports = { rolesChecker }
+module.exports = { checkRole }

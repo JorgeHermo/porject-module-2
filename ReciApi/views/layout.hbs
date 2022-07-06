@@ -46,6 +46,11 @@
                </li>
                <a class="nav-link" href="/recipes/my-recipes">My recipes</a>
                </li>
+               {{#if roles.isAdmin}}
+               </li>
+               <a class="nav-link" href="/admin">Admin Panel</a>
+               </li>
+               {{/if}}
                <li class="nav-item">
                   <form action="/log-out" method="POST">
                      <input class="dropdown-item" type="submit" value="Log-out">
