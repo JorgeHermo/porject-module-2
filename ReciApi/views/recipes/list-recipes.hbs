@@ -2,15 +2,24 @@
     <h1>Recipes list</h1>
     <hr>
 
-    {{#each recipes}}
+    {{#each allInfo}}
 
     <div class="card" style="width: 18rem;">
-        <img src="{{imageUrl}}" class="card-img-top" alt="{{title}}">
+        <img src="{{recipe.imageUrl}}" class="card-img-top" alt="{{recipe.title}}">
         <div class="card-body">
-            <h5 class="card-title">{{title}}</h5>
-            <p class="card-text">{{description}}</p>
-            <a href="/recipes/{{id}}/details" class="btn btn-primary">Details</a>
-            <a href="/recipes/{{id}}/edit">Edit</a>
+            <h5 class="card-title">{{recipe.title}}</h5>
+            <p class="card-text">{{recipe.description}}</p>
+            <a href="/recipes/{{recipe._id}}/details" class="btn btn-primary">Details</a>
+
+            {{#if isOwner}}
+            <a href="/recipes/{{recipe._id}}/edit">Edit</a>
+
+            <form action="/recipes/{{recipe._id}}/delete" method="POST" style="display: inline-block">
+                <input type="submit" value="eliminar" class="btn btn-danger btn-sm">
+            </form>
+
+            {{/if}}
+
         </div>
     </div>
 

@@ -3,26 +3,30 @@ const bcrypt = require('bcryptjs')
 const User = require("../models/User.model")
 const saltRounds = 10
 
-const { isLoggedOut } = require("../middleware/session-guards"); 
+const { isLoggedOut } = require("../middleware/session-guards");
+
+const uploaderConfig = require('./../config/uploader.config')
 
 
 // Signup
 router.get('/sign-up', isLoggedOut, (req, res, next) => res.render('auth/signup'))
-router.post('/sign-up', isLoggedOut, (req, res, next) => {
+router.post('/sign-up', isLoggedOut, uploaderConfig.single('cover'), (req, res, next) => {
 
 
     const { userPassword } = req.body
 
+    console.log('-----', req.file)
+
     bcrypt
         .genSalt(saltRounds)
         .then(salt => bcrypt.hash(userPassword, salt))
-        .then(hashedPassword => User.create({ ...req.body, password: hashedPassword }))
+        .then(hashedPassword => User.create({ ...req.body, password: hashedPassword, avatar: req.file.path }))
         .then(() => res.redirect('/'))
         .catch(error => next(new Error(error)))
 })
 
 // Login
-router.get('/log-in', isLoggedOut,(req, res, next) => res.render('auth/login'))
+router.get('/log-in', isLoggedOut, (req, res, next) => res.render('auth/login'))
 router.post('/log-in', isLoggedOut, (req, res, next) => {
 
     const { email, userPassword } = req.body

@@ -36,7 +36,23 @@ router.get('/list', isLoggedIn, (req, res, next) => {
 
     Recipe
         .find()
-        .then(recipes => res.render('recipes/list-recipes', { recipes }))
+        .populate('owner')
+        .then(recipes => {
+
+            let allInfo = []
+            recipes.forEach(elm => {
+
+                const ownerID = elm.owner._id.toString()
+
+                if (ownerID === req.session.currentUser._id) {
+                    allInfo.push({ isOwner: true, recipe: elm })
+                } else {
+                    allInfo.push({ isOwner: false, recipe: elm })
+                }
+            })
+            return allInfo
+        })
+        .then(allInfo => res.render('recipes/list-recipes', { allInfo }))
         .catch(error => next(new Error(error)))
 })
 
@@ -46,14 +62,9 @@ router.get('/my-recipes', isLoggedIn, (req, res, next) => {
 
     const { _id: owner } = req.session.currentUser
 
-    console.log('..........', owner)
-
     Recipe
         .find({ owner })
-        .then(recipes => {
-            console.log('+++++++', recipes)
-            res.render('recipes/my-recipes', { recipes })
-        })
+        .then(recipes => res.render('recipes/my-recipes', { recipes }))
         .catch(error => next(new Error(error)))
 })
 
@@ -102,7 +113,7 @@ router.post('/:id/delete', isLoggedIn, (req, res, next) => {
 
     Recipe
         .findByIdAndDelete(id)
-        .then(() => res.redirect('/recipes/list-recipes'))
+        .then(() => res.redirect('/recipes/list'))
         .catch(error => next(new Error(error)))
 })
 

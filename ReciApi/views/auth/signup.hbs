@@ -7,7 +7,7 @@
             <h1>Register</h1>
             <hr>
 
-            <form action="/sign-up" method="POST">
+            <form action="/sign-up" method="POST" enctype="multipart/form-data">
 
                 <div class="mb-3 row">
                     <div class="col">
@@ -29,8 +29,7 @@
 
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Image</label>
-                    <input type="file" class="form-control" id="formFile" name="avatar">
-                    <div class="form-text">Insert image URL</div>
+                    <input class="form-control" type="file" id="formFile" name="cover">
                 </div>
 
                 <div class="mb-3">

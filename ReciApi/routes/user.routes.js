@@ -3,14 +3,16 @@ const router = require("express").Router()
 const User = require("../models/User.model")
 
 const { isLoggedIn } = require('../middleware/session-guards')
-
+const { rolesChecker } = require('../utils/checker-roles')
 
 //ALL USERS
 router.get('/', isLoggedIn, (req, res, next) => {
 
+    const roles = rolesChecker(req.session.currentUser)
+
     User
         .find()
-        .then(users => res.render('users/users-list', { users }))
+        .then(users => res.render('users/users-list', { users, roles }))
         .catch(error => next(new Error(error)))
 })
 
