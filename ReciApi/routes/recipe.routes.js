@@ -1,6 +1,7 @@
 const router = require('express').Router()
 
 const Recipe = require('./../models/Recipe.model')
+const Comment = require('./../models/Comment.model')
 
 const { isLoggedIn } = require('../middleware/session-guards')
 const uploaderConfig = require('./../config/uploader.config')
@@ -71,10 +72,22 @@ router.get('/:id/details', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
 
-    Recipe
-        .findById(id)
-        .populate('owner')
-        .then(recipeData => res.render('recipes/details-recipe', { recipeData }))
+    const promises = [
+        Recipe.findById(id).populate('owner'),
+        Comment.find({ recipe: id })
+    ]
+
+    Promise
+        .all(promises)
+        .then(responsesArray => {
+            const recipeData = responsesArray[0]
+            const commentsData = responsesArray[1]
+
+            console.log('LA INFO DE LA RECETA;', recipeData)
+            console.log('LA INFO DE COMENTARIOS;', commentsData)
+
+            res.render('recipes/details-recipe', { recipeData, commentsData })
+        })
         .catch(error => next(new Error(error)))
 })
 
