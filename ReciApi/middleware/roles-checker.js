@@ -6,5 +6,5 @@ const checkRole = (...grantedRoles) => (req, res, next) => {
         res.render('auth/login', { errorMessage: 'WRONG CREDENTIALS' })
     }
 }
-
+ 
 module.exports = { checkRole }

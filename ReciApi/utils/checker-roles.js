@@ -5,5 +5,5 @@ const rolesChecker = user => {
         isUser: user?.role === "USER"
     }
 }
-
+ 
 module.exports = { rolesChecker }

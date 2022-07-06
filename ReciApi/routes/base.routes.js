@@ -9,7 +9,4 @@ router.get('/', (req, res, next) => {
     res.render('pages/index', { roles })
 })
 
-
-
-
 module.exports = router
