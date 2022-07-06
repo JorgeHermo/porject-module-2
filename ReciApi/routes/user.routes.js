@@ -5,6 +5,7 @@ const User = require("../models/User.model")
 const { isLoggedIn } = require('../middleware/session-guards')
 const { rolesChecker } = require('../utils/checker-roles')
 
+
 //ALL USERS
 router.get('/', isLoggedIn, (req, res, next) => {
 
