@@ -1,4 +1,5 @@
 let map
+//let geocoder
 
 function initialize() {
     renderMap()
@@ -8,11 +9,12 @@ function initialize() {
 function renderMap() {
     map = new google.maps.Map(
         document.querySelector('#myMap'),
-        { zoom: 10, center: { lat: 40.416775, lng: -3.703790 }, styles: mapStyles.retro }
+        { zoom: 4, center: { lat: 40.416775, lng: -3.703339 }, styles: mapStyles.yellowHumanMade }
     )
 }
 
 function getPlacesFromDB() {
+
     axios
         .get('/api/maps')
         .then(response => printMarkers(response.data))
@@ -22,10 +24,10 @@ function getPlacesFromDB() {
 function printMarkers(places) {
     console.log(places)
 
-    places.forEach(place => {
+    places.forEach(elm => {
         let position = {
-            let: place.location.coordinates[0],
-            lng: place.location.coordinates[1]
+            lat: elm.location.coordinates[0],
+            lng: elm.location.coordinates[1]
         }
         new google.maps.Marker({ position, map })
     })
