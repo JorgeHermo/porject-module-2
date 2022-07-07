@@ -6,7 +6,7 @@
 
             {{#each allInfo}}
 
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 35rem;">
                 <img src="{{recipe.imageUrl}}" class="card-img-top" alt="{{recipe.title}}">
                 <div class="card-body">
                     <h5 class="card-title">{{recipe.title}}</h5>
@@ -14,10 +14,10 @@
                     <a href="/recipes/{{recipe._id}}/details" class="btn btn-primary">Details</a>
 
                     {{#if isOwner}}
-                    <a href="/recipes/{{recipe._id}}/edit">Edit</a>
+                    <a href="/recipes/{{recipe._id}}/edit" class="btn btn-primary">Edit</a>
 
                     <form action="/recipes/{{recipe._id}}/delete" method="POST" style="display: inline-block">
-                        <input type="submit" value="eliminar" class="btn btn-danger btn-sm">
+                        <input type="submit" value="Delete" class="btn btn-danger">
                     </form>
 
                     {{/if}}
