@@ -7,7 +7,7 @@ router.get('/maps', (req, res) => {
     Recipe
         .find()
         .then(recipeInfo => res.json(recipeInfo))
-        .catch(error => next(new Error(error)))
+        .catch(error => res.status(500).json({ message: 'server error', error }))
 
 })
 

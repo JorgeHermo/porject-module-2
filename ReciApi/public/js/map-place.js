@@ -32,7 +32,7 @@ function printMarkers(recipeInfo) {
 
         console.log(image)
 
-        new google.maps.Marker({ position, map, icon: image })
+        new google.maps.Marker({ position, map, icon: image, title: elm.title })
     })
 
     map.setCenter({

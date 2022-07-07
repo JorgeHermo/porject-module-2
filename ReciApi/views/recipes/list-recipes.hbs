@@ -1,27 +1,46 @@
 <div class="container">
-    <h1>Recipes list</h1>
-    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Recipes list</h1>
+            <hr>
 
-    {{#each allInfo}}
+            {{#each allInfo}}
 
-    <div class="card" style="width: 18rem;">
-        <img src="{{recipe.imageUrl}}" class="card-img-top" alt="{{recipe.title}}">
-        <div class="card-body">
-            <h5 class="card-title">{{recipe.title}}</h5>
-            <p class="card-text">{{recipe.description}}</p>
-            <a href="/recipes/{{recipe._id}}/details" class="btn btn-primary">Details</a>
+            <div class="card" style="width: 18rem;">
+                <img src="{{recipe.imageUrl}}" class="card-img-top" alt="{{recipe.title}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{recipe.title}}</h5>
+                    <p class="card-text">{{recipe.description}}</p>
+                    <a href="/recipes/{{recipe._id}}/details" class="btn btn-primary">Details</a>
 
-            {{#if isOwner}}
-            <a href="/recipes/{{recipe._id}}/edit">Edit</a>
+                    {{#if isOwner}}
+                    <a href="/recipes/{{recipe._id}}/edit">Edit</a>
 
-            <form action="/recipes/{{recipe._id}}/delete" method="POST" style="display: inline-block">
-                <input type="submit" value="eliminar" class="btn btn-danger btn-sm">
-            </form>
+                    <form action="/recipes/{{recipe._id}}/delete" method="POST" style="display: inline-block">
+                        <input type="submit" value="eliminar" class="btn btn-danger btn-sm">
+                    </form>
 
-            {{/if}}
+                    {{/if}}
 
+                </div>
+            </div>
+
+            {{/each}}
+        </div>
+        <div class="col-md-6">
+            <div class="container">
+                <h1>Map</h1>
+                <hr>
+                <div id="myMap"></div>
+            </div>
+
+            <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+            <script src="/js/mapStyles.js"></script>
+            <script src="/js/map-place.js"></script>
+
+            <script
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAOWqzSu87EDdFNyL5JMS-rNFqoZUPbptw&callback=initialize"></script>
         </div>
     </div>
-
-    {{/each}}
 </div>

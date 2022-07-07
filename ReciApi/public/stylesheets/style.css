@@ -1,8 +1,39 @@
 body {
+  background-color: rgb(245, 245, 220);
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 #myMap {
   height: 400px;
   width: 600px
+}
+
+.navbar {
+  background-color: rgb(124, 49, 143);
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.nav-link {
+  color: rgb(245, 245, 220)
+}
+
+.navbar-brand {
+  color: rgb(245, 245, 220)
+}
+
+.btn-color {
+  background-color: rgb(124, 49, 143)
+}
+
+.dropdown-menu {
+  background-color: rgb(124, 49, 143)
+}
+
+.dropdown-toggle {
+  color: rgb(245, 245, 220)
+}
+
+.dropdown-item {
+  color: rgb(245, 245, 220);
 }

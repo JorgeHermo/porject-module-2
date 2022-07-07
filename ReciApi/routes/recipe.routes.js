@@ -37,17 +37,16 @@ router.get('/list', isLoggedIn, (req, res, next) => {
         .populate('owner')
         .then(recipes => {
 
-            let allInfo = []
-            recipes.forEach(elm => {
+            let allInfo = recipes.map(recipe => {
 
-                const ownerID = elm.owner._id.toString()
+                const ownerID = recipe.owner._id.toString()
 
-                if (ownerID === req.session.currentUser._id) {
-                    allInfo.push({ isOwner: true, recipe: elm })
-                } else {
-                    allInfo.push({ isOwner: false, recipe: elm })
+                return {
+                    isOwner: ownerID === req.session.currentUser._id,
+                    recipe
                 }
             })
+
             return allInfo
         })
         .then(allInfo => res.render('recipes/list-recipes', { allInfo }))
@@ -79,13 +78,7 @@ router.get('/:id/details', isLoggedIn, (req, res, next) => {
 
     Promise
         .all(promises)
-        .then(responsesArray => {
-
-            const recipeData = responsesArray[0]
-            const commentsData = responsesArray[1]
-
-            res.render('recipes/details-recipe', { recipeData, commentsData })
-        })
+        .then(([recipeData, commentsData]) => res.render('recipes/details-recipe', { recipeData, commentsData }))
         .catch(error => next(new Error(error)))
 })
 

@@ -26,7 +26,7 @@ router.get('/:id/details', isLoggedIn, (req, res, next) => {
     User
         .findById(id)
         .populate('favRecipes')
-        .then(user => res.render('users/user-profile', { user }, console.log('soy la info del user -------', user)))
+        .then(user => res.render('users/user-profile', { user }))
         .catch(error => next(new Error(error)))
 })
 
@@ -73,11 +73,6 @@ router.post('/:id/favRecipes', isLoggedIn, (req, res, next) => {
 
     const { _id: user_id } = req.session.currentUser
     const { id: recipe_id } = req.params
-
-
-
-    console.log('USUARIO', user_id)
-    console.log('RECETA', recipe_id)
 
     User
         .findByIdAndUpdate(user_id, { $push: { favRecipes: recipe_id } })
