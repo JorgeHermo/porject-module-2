@@ -30,7 +30,7 @@ function printMarkers(recipeInfo) {
 
         let image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
 
-        new google.maps.Marker({ position, map, icon: image })
+        new google.maps.Marker({ position, map, icon: image, title: elm.title })
     })
 
     map.setCenter({

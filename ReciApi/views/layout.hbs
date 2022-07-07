@@ -17,7 +17,7 @@
 
 <body>
 
-   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+   <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
          <a class="navbar-brand" href="/">{{appTitle}}</a>
          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -26,39 +26,53 @@
          </button>
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-               <li class="nav-item">
-                  <a class="nav-link" href="/sign-up">Register</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="/log-in">Login</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="/recipes/create">New Recipe</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="/recipes/list">Recipe List</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="/users">User List</a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="/maps/basic">MAP </a>
-               </li>
-               <a class="nav-link" href="/recipes/my-recipes">My recipes</a>
-               </li>
-               {{#if roles.isAdmin}}
-               </li>
-               <a class="nav-link" href="/admin">Admin Panel</a>
-               </li>
-               {{/if}}
-               <li class="nav-item">
-                  <form action="/log-out" method="POST">
-                     <input class="dropdown-item" type="submit" value="Log-out">
-                  </form>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" href="/"></a>
-               </li>
+               <div class="btn-group">
+                  <button type="button" class="btn btn-color dropdown-toggle" data-bs-toggle="dropdown"
+                     aria-expanded="false">
+                     AUTH
+                  </button>
+                  <ul class="dropdown-menu">
+                     <li class="nav-item">
+                        <a class="dropdown-item" class="nav-link" href="/sign-up">Register</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="dropdown-item" class="nav-link" href="/log-in">Login</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="dropdown-item" class="nav-link" href="/users">User List</a>
+                     </li>
+                     {{#if roles.isAdmin}}
+                     <li class="nav-item">
+                        <a class="dropdown-item" class="nav-link" href="/admin">Admin Panel</a>
+                     </li>
+                     {{/if}}
+                     <li>
+                        <hr class="dropdown-divider">
+                     </li>
+                     <li>
+                        <a class="dropdown-item" <form action="/log-out" method="POST">
+                           <input class="dropdown-item" type="submit" value="Log-out">
+                           </form></a>
+                     </li>
+                  </ul>
+               </div>
+               <div class="btn-group">
+                  <button type="button" class="btn btn-color dropdown-toggle" data-bs-toggle="dropdown"
+                     aria-expanded="false">
+                     RECIPES
+                  </button>
+                  <ul class="dropdown-menu">
+                     <li class="nav-item">
+                        <a class="dropdown-item" class="nav-link" href="/recipes/create">New Recipe</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="dropdown-item" class="nav-link" href="/recipes/list">Recipe List</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="dropdown-item" class="nav-link" href="/recipes/my-recipes">My recipes</a>
+                     </li>
+                  </ul>
+               </div>
          </div>
       </div>
    </nav>
