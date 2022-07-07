@@ -3,21 +3,37 @@
 
     <hr>
 
-    <div class="card" style="width: 30rem;">
+    <div class="row">
 
-        <img src="{{user.avatar}}" class="card-img-top" alt="Avatar pic">
+        <div class="col-md-6">
 
-        <div class="card-body">
+            <div class="card" style="width: 30rem;">
 
-            <h5 class="card-title">Name: {{user.username}}</h5>
-            <p class="card-text">Email: {{user.email}}</p>
-            <p class="card-text">Description: {{user.description}}</p>
-            <a href="/users" class="btn btn-warning">Return to Users List!</a>
+                <img src="{{user.avatar}}" class="card-img-top" alt="Avatar pic">
+
+                <div class="card-body">
+
+                    <h5 class="card-title">Name: {{user.username}}</h5>
+                    <p class="card-text">Email: {{user.email}}</p>
+                    <p class="card-text">Description: {{user.description}}</p>
+                    <a href="/users" class="btn btn-warning">Return to Users List!</a>
+
+                </div>
+
+            </div>
 
         </div>
-        <div>
-            <p>{{user.favRecipes.[0].imageUrl}}</p>
+
+        <div class="col-md-6">
+
+            <div>
+
+                <p>{{user.favRecipes.[0].imageUrl}}</p>
+
+            </div>
+
         </div>
+
     </div>
 
 </div>

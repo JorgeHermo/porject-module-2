@@ -1,11 +1,27 @@
 <div class="container">
 
-    <h1>My recipes</h1>
+    <div class="row">
 
-    <hr>
+        <div class="col-md-6">
 
-    {{#each recipes}}
-    <p> <img src="{{imageUrl}}" alt="imagen"> <h2>{{title}}</h2>  <h5>{{description}}</h5></p>
-    {{/each}}
+            {{#each recipes}}
+            <div class="card" style="width: 18rem;">
+                <h1>My recipes</h1>
+
+                <hr>
+
+                <img src="{{imageUrl}}" class="card-img-top" alt="{{title}}">
+
+                <div class="card-body">
+                    <h2>{{title}}</h2>
+                    <p>{{description}}</p>
+                </div>
+
+            </div>
+            {{/each}}
+
+        </div>
+
+    </div>
 
 </div>
