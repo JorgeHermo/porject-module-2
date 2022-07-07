@@ -57,7 +57,7 @@ router.post('/:id/edit', isLoggedIn, (req, res, next) => {
 
 
 //DELETE USER 
-router.get('/:id/delete', isLoggedIn, (req, res) => {
+router.get('/:id/delete', isLoggedIn, (req, res, next) => {
 
     const { id } = req.params
 
@@ -67,5 +67,21 @@ router.get('/:id/delete', isLoggedIn, (req, res) => {
         .catch(error => next(new Error(error)))
 })
 
+
+// FAVRECIPES ROUTES
+router.post('/:id/favRecipes', isLoggedIn, (req, res, next) => {
+
+    const { _id: user_id } = req.session.currentUser._id
+    const { id: recipe_id } = req.params
+
+    console.log(req.session.currentUser._id)
+    console.log(req.params)
+
+    User
+        .findByIdAndUpdate(id, { favRecipe })
+        .then(() => res.render('recipes/details-recipe', { favRecipe }))
+        .catch(error => next(new Error(error)))
+
+})
 
 module.exports = router

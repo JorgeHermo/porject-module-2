@@ -80,11 +80,9 @@ router.get('/:id/details', isLoggedIn, (req, res, next) => {
     Promise
         .all(promises)
         .then(responsesArray => {
+
             const recipeData = responsesArray[0]
             const commentsData = responsesArray[1]
-
-            console.log('LA INFO DE LA RECETA;', recipeData)
-            console.log('LA INFO DE COMENTARIOS;', commentsData)
 
             res.render('recipes/details-recipe', { recipeData, commentsData })
         })

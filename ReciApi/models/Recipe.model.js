@@ -15,12 +15,12 @@ const recipeSchema = new Schema(
         },
         description: {
             type: String,
-            //required: [true, 'Description is required.'],
+            required: [true, 'Description is required.'],
             trim: true
         },
         directions: {
             type: [String],
-            //required: [true, 'Directions are required.']
+            required: [true, 'Directions are required.']
         },
         location: {
             type: {
@@ -50,11 +50,11 @@ const recipeSchema = new Schema(
         },
         duration: {
             type: Number,
-            //required: [true, 'Duration is required.']
+            required: [true, 'Duration is required.']
         },
         imageUrl: {
             type: String,
-            //required: [true, 'Image is required.']
+            required: [true, 'Image is required.']
         }
     },
     {
