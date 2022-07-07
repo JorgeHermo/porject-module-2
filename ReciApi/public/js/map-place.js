@@ -17,7 +17,7 @@ function getPlacesFromDB() {
     axios
         .get('/api/maps')
         .then(response => printMarkers(response.data))
-        .catch(err => console.log((err)))
+        .catch(error => next(new Error(error)))
 }
 
 function printMarkers(recipeInfo) {
@@ -29,8 +29,6 @@ function printMarkers(recipeInfo) {
         }
 
         let image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
-
-        console.log(image)
 
         new google.maps.Marker({ position, map, icon: image })
     })

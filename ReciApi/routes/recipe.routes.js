@@ -15,7 +15,7 @@ router.get('/create', isLoggedIn, (req, res, next) => {
 // RECIPE CREATE
 router.post('/create', isLoggedIn, uploaderConfig.single('cover'), (req, res, next) => {
 
-    const { title, ingredients, directions, category, duration, latitude, longitude } = req.body
+    const { title, ingredients, directions, description, category, duration, latitude, longitude } = req.body
     const location = {
         type: 'Point',
         coordinates: [latitude, longitude]
@@ -23,7 +23,7 @@ router.post('/create', isLoggedIn, uploaderConfig.single('cover'), (req, res, ne
     const owner = req.session.currentUser._id
 
     Recipe
-        .create({ title, ingredients, directions, category, duration, location, imageUrl: req.file.path, owner })
+        .create({ title, ingredients, directions, description, category, duration, location, imageUrl: req.file.path, owner })
         .then(() => res.redirect('/recipes/list'))
         .catch(error => next(new Error(error)))
 })

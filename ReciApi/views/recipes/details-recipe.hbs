@@ -6,20 +6,33 @@
 
         <div class="col-md-6">
 
-            <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 35rem;">
 
                 <img src="{{recipeData.imageUrl}}" class="card-img-top" alt="{{recipeData.title}}">
 
                 <div class="card-body">
-                    <h5 class="card-title">{{recipeData.title}}</h5>
-                    <p class="card-text">{{recipeData.description}}</p>
+                    <h3 class="card-title">{{recipeData.title}}</h3>
+                    <hr>
+                    <h5 class="card-title">Location</h5>
+                    <p class="card-text">{{recipeData.location.coordinates.[0]}} <br> {{recipeData.location.coordinates.[1]}} </p>
+                    <h5>{{recipeData.description}}</h5>
+                    <h5>Ingredients</h5>
 
                     <ul>
-                        <li>{{recipeData.ingredients.[0]}}</li>
-                        <li>{{recipeData.ingredients.[1]}}</li>
-                        <li>{{recipeData.ingredients.[2]}}</li>
-                        <li>{{recipeData.ingredients.[3]}}</li>
-                        <li>{{recipeData.ingredients.[4]}}</li>
+                        {{#each recipeData.ingredients}}
+                        <li>{{this}}</li>
+                        {{/each}}
+                    </ul>
+
+                    <hr>
+
+                    <h5>Directions</h5>
+
+                    <ul>
+                        {{#each recipeData.directions}}
+                        <li>{{this}}</li>
+                        {{/each}}
+
                     </ul>
 
                 </div>
@@ -27,7 +40,7 @@
                 <form action="/comments/{{recipeData._id}}/comment" method="POST">
 
                     <div class="mb-3">
-                        <label for="comment" class="form-label">Example textarea</label>
+                        <label for="comment" class="form-label">Add your comment here!</label>
                         <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
                     </div>
 
