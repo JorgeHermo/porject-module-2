@@ -6,7 +6,7 @@ router.get('/maps', (req, res) => {
 
     Recipe
         .find()
-        .then(places => res.json(places))
+        .then(recipeInfo => res.json(recipeInfo))
         .catch(error => next(new Error(error)))
 
 })

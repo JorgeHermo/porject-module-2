@@ -32,7 +32,8 @@ const userSchema = new Schema(
     },
     favRecipes: {
       type: Schema.Types.ObjectId,
-      ref: 'Recipes'
+      ref: 'Recipes',
+      default: ''
     },
   },
   {

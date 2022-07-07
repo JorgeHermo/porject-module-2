@@ -1,5 +1,4 @@
 let map
-//let geocoder
 
 function initialize() {
     renderMap()
@@ -21,19 +20,23 @@ function getPlacesFromDB() {
         .catch(err => console.log((err)))
 }
 
-function printMarkers(places) {
-    console.log(places)
+function printMarkers(recipeInfo) {
 
-    places.forEach(elm => {
+    recipeInfo.forEach(elm => {
         let position = {
             lat: elm.location.coordinates[0],
             lng: elm.location.coordinates[1]
         }
-        new google.maps.Marker({ position, map })
+
+        let image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+
+        console.log(image)
+
+        new google.maps.Marker({ position, map, icon: image })
     })
 
     map.setCenter({
-        lat: places[0].location.coordinates[0],
-        lng: places[0].location.coordinates[1]
+        lat: recipeInfo[0].location.coordinates[0],
+        lng: recipeInfo[0].location.coordinates[1]
     })
 }
