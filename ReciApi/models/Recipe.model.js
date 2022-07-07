@@ -15,7 +15,7 @@ const recipeSchema = new Schema(
         },
         description: {
             type: String,
-            required: [true, 'Description is required.'],
+            //required: [true, 'Description is required.'],
             trim: true
         },
         directions: {
