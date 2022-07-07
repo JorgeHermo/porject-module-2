@@ -30,11 +30,10 @@ const userSchema = new Schema(
       enum: ['USER', 'ADMIN'],
       default: 'USER'
     },
-    favRecipes: {
+    favRecipes: [{
       type: Schema.Types.ObjectId,
-      ref: 'Recipes',
-      default: ''
-    },
+      ref: 'Recipe'
+    }],
   },
   {
     timestamps: true,

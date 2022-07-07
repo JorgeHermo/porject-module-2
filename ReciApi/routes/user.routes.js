@@ -10,7 +10,6 @@ const { rolesChecker } = require('../utils/checker-roles')
 router.get('/', isLoggedIn, (req, res, next) => {
 
     const roles = rolesChecker(req.session.currentUser)
-    console.log(roles)
 
     User
         .find()
@@ -26,7 +25,8 @@ router.get('/:id/details', isLoggedIn, (req, res, next) => {
 
     User
         .findById(id)
-        .then(user => res.render('users/user-profile', { user }))
+        .populate('favRecipes')
+        .then(user => res.render('users/user-profile', { user }, console.log('soy la info del user -------', user)))
         .catch(error => next(new Error(error)))
 })
 
@@ -71,17 +71,18 @@ router.get('/:id/delete', isLoggedIn, (req, res, next) => {
 // FAVRECIPES ROUTES
 router.post('/:id/favRecipes', isLoggedIn, (req, res, next) => {
 
-    const { _id: user_id } = req.session.currentUser._id
+    const { _id: user_id } = req.session.currentUser
     const { id: recipe_id } = req.params
 
-    console.log(req.session.currentUser._id)
-    console.log(req.params)
+
+
+    console.log('USUARIO', user_id)
+    console.log('RECETA', recipe_id)
 
     User
-        .findByIdAndUpdate(id, { favRecipe })
-        .then(() => res.render('recipes/details-recipe', { favRecipe }))
+        .findByIdAndUpdate(user_id, { $push: { favRecipes: recipe_id } })
+        .then(() => res.redirect(`/recipes/${recipe_id}/details`))
         .catch(error => next(new Error(error)))
-
 })
 
 module.exports = router

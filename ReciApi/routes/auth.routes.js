@@ -15,8 +15,6 @@ router.post('/sign-up', isLoggedOut, uploaderConfig.single('cover'), (req, res, 
 
     const { userPassword } = req.body
 
-    console.log('-----', req.file)
-
     bcrypt
         .genSalt(saltRounds)
         .then(salt => bcrypt.hash(userPassword, salt))
