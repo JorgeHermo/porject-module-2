@@ -11,29 +11,53 @@
                 <img src="{{recipeData.imageUrl}}" class="card-img-top" alt="{{recipeData.title}}">
 
                 <div class="card-body">
-                    <h3 class="card-title">{{recipeData.title}}</h3>
+
+                    <div class="row">
+
+                        <div class="col-sm-6">
+
+                            <h3 id="recipeTitle" class="card-title">{{recipeData.title}}</h3>
+
+                        </div>
+
+                        <div class="col-sm-6">
+
+                            <form action="/users/{{recipeData._id}}/favRecipes" method="POST"
+                                style="display: inline-block">
+                                <input type="submit" value="FAV" name="FAV" id="FAV" class="btn btn-danger btn-sm">
+                            </form>
+
+                        </div>
+
+                    </div>
+
                     <hr>
                     <h5 class="card-title">Location</h5>
-                    <p class="card-text">{{recipeData.location.coordinates.[0]}} <br> {{recipeData.location.coordinates.[1]}} </p>
+                    <p class="card-text">{{recipeData.location.coordinates.[0]}} <br>
+                        {{recipeData.location.coordinates.[1]}} </p>
                     <h5>{{recipeData.description}}</h5>
-                    <h5>Ingredients</h5>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h5>Directions</h5>
 
-                    <ul>
-                        {{#each recipeData.ingredients}}
-                        <li>{{this}}</li>
-                        {{/each}}
-                    </ul>
+                            <ul>
+                                {{#each recipeData.directions}}
+                                <li>{{this}}</li>
+                                {{/each}}
+
+                            </ul>
+                        </div>
+                        <div class="col-sm-6">
+                            <h5>Ingredients</h5>
+                            <ul>
+                                {{#each recipeData.ingredients}}
+                                <li>{{this}}</li>
+                                {{/each}}
+                            </ul>
+                        </div>
+                    </div>
 
                     <hr>
-
-                    <h5>Directions</h5>
-
-                    <ul>
-                        {{#each recipeData.directions}}
-                        <li>{{this}}</li>
-                        {{/each}}
-
-                    </ul>
 
                 </div>
 
@@ -44,15 +68,11 @@
                         <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
                     </div>
 
-                    <div class="mb-3">
-                        <button type="submit" class="btn btn-dark">Comment</button>
-                    </div>
-
                 </form>
 
-                <form action="/users/{{recipeData._id}}/favRecipes" method="POST" style="display: inline-block">
-                    <input type="submit" value="FAV" name="FAV" id="FAV" class="btn btn-danger btn-sm">
-                </form>
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-dark">Comment</button>
+                </div>
 
             </div>
 
@@ -65,7 +85,7 @@
             <hr>
 
             {{#each commentsData}}
-            <p>{{comment}}</p>
+            <p>{{comment}} - {{owner.username}}</p>
             {{/each}}
 
         </div>

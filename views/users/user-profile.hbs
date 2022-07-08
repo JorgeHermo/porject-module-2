@@ -28,9 +28,9 @@
 
             <div>
                 <h2>Mis favoritas</h2>
-
-                <p><img src="{{user.favRecipes.[0].imageUrl}}" alt="Users favorite"></p>
-
+                {{#each user.favRecipes}}
+                <p><img src="{{imageUrl}}" alt="Users favorite"></p>
+                {{/each}}
             </div>
 
         </div>

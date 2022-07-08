@@ -1,7 +1,7 @@
 body {
   background-color: #fefce6;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: #7c318f
+  color: #be80cf
 }
 
 #myMap {
@@ -52,4 +52,8 @@ body {
 .avatarImg img {
   height: 150px;
   width: 150px
+}
+
+#recipeTitle {
+  font-weight: bold;
 }
