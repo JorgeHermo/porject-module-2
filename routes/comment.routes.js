@@ -18,5 +18,4 @@ router.post('/:recipe_id/comment', isLoggedIn, (req, res, next) => {
         .catch(error => next(new Error(error)))
 })
 
-
 module.exports = router
