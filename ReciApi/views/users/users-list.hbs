@@ -4,11 +4,12 @@
 
 
     {{#each users}}
+
+    <h3>{{username}}</h3>
     <div class="row">
         <div class="col-md-6">
             <a href="/users/{{id}}/details" class="avatarImg"><img src=" {{avatar}}" alt="avatar"></a>
         </div>
-
 
 
         {{#if ../roles.isAdmin}}
@@ -19,8 +20,9 @@
 
         {{/if}}
 
-        <hr>
     </div>
+        <hr>
+
     {{/each}}
 
 </div>
