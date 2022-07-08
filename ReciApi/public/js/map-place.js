@@ -8,7 +8,7 @@ function initialize() {
 function renderMap() {
     map = new google.maps.Map(
         document.querySelector('#myMap'),
-        { zoom: 4, center: { lat: 40.416775, lng: -3.703339 }, styles: mapStyles.yellowHumanMade }
+        { zoom: 4, center: { lat: 40.416775, lng: -3.703339 }, styles: mapStyles.night }
     )
 }
 

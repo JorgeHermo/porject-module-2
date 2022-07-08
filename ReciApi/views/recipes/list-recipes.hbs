@@ -7,8 +7,11 @@
             {{#each allInfo}}
 
             <div class="card" style="width: 35rem;">
+
                 <img src="{{recipe.imageUrl}}" class="card-img-top" alt="{{recipe.title}}">
+
                 <div class="card-body">
+
                     <h5 class="card-title">{{recipe.title}}</h5>
                     <p class="card-text">{{recipe.description}}</p>
                     <a href="/recipes/{{recipe._id}}/details" class="btn btn-primary">Details</a>
