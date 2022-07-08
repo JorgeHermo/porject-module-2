@@ -80,7 +80,6 @@ router.get('/:id/details', isLoggedIn, (req, res, next) => {
     Promise
         .all(promises)
         .then(([recipeData, commentsData]) => {
-            console.log('-------', commentsData)
             res.render('recipes/details-recipe', { recipeData, commentsData })
         })
         .catch(error => next(new Error(error)))
