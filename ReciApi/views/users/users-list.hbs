@@ -2,21 +2,25 @@
 
     <h2>All the users!</h2>
 
+
     {{#each users}}
-
-    <a href="/users/{{id}}/details">{{username}}'s details</a>
-
-
-    {{#if ../roles.isAdmin}}
-
-    <a href="/users/{{id}}/edit" class="btn btn-primary">Edit {{username}} </a>
-    <a href="/users/{{id}}/delete" class="btn btn-danger btn-sm">Delete {{username}} </a>
+    <div class="row">
+        <div class="col-md-6">
+            <a href="/users/{{id}}/details" class="avatarImg"><img src=" {{avatar}}" alt="avatar"></a>
+        </div>
 
 
-    {{/if}}
 
-    <hr>
+        {{#if ../roles.isAdmin}}
+        <div class="col-md-6">
+            <a href="/users/{{id}}/edit" class="btn btn-primary">Edit {{username}} </a>
+            <a href="/users/{{id}}/delete" class="btn btn-danger btn-sm">Delete {{username}} </a>
+        </div>
 
+        {{/if}}
+
+        <hr>
+    </div>
     {{/each}}
 
 </div>
