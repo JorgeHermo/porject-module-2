@@ -15,11 +15,11 @@ body {
 }
 
 .nav-link {
-  color: rgb(245, 245, 220)
+  color: #fefce6
 }
 
 .navbar-brand {
-  color: rgb(245, 245, 220)
+  color: #fefce6
 }
 
 .btn-color {
@@ -31,15 +31,15 @@ body {
 }
 
 .dropdown-toggle {
-  color: rgb(245, 245, 220)
+  color: #fefce6
 }
 
 .dropdown-item {
-  color: rgb(245, 245, 220);
+  color: #fefce6
 }
 
 .card {
-  background-color: rgb(245, 245, 220)
+  background-color: #fefce6
 }
 
 /* .card-body a {
