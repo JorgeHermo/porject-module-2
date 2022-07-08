@@ -1,6 +1,6 @@
 const router = require("express").Router()
 
-const Comment = require('../models/Comment.model')
+const Comment = require('./../models/Comment.model')
 
 const { isLoggedIn } = require('../middleware/session-guards')
 
